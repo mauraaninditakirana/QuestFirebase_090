@@ -16,7 +16,7 @@ import java.io.IOException
 
 
 sealed interface StatusUIDetail {
-    data class Success(val satusiswa: Siswa?) : StatusUIDetail
+    data class Success(val satusiswa: Siswa) : StatusUIDetail
     object Error : StatusUIDetail
     object Loading : StatusUIDetail
 }
@@ -37,9 +37,11 @@ RepositorySiswa):ViewModel() {
         viewModelScope.launch {
             statusUIDetail = StatusUIDetail.Loading
             statusUIDetail = try {
-                StatusUIDetail.Success(satusiswa = repositorySiswa.getSatuSiswa(idSiswa) )
-            }
-            catch (e: IOException){
+                val siswa = repositorySiswa.getSatuSiswa(idSiswa)
+                    ?: throw IOException("Data siswa tidak ditemukan")
+
+                StatusUIDetail.Success(satusiswa = siswa)
+            } catch (e: Exception) {
                 StatusUIDetail.Error
             }
             catch (e: Exception) {
