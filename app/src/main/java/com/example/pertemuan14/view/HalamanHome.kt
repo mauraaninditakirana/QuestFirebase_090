@@ -77,7 +77,7 @@ fun HomeScreen(
         }
     ) { innerPadding ->
         HomeBody(
-            statusUISiswa = viewModel.statusUiSiswa,
+            statusUISiswa = viewModel.statusUISiswa,
             onSiswaClick = navigateToItemUpdate,
             retryAction = viewModel::loadSiswa,
             modifier = modifier
