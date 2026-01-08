@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pertemuan14.modeldata.Siswa
 import com.example.pertemuan14.repositori.RepositorySiswa
+import com.example.pertemuan14.view.route.DestinasiDetail
 import kotlinx.coroutines.launch
 import kotlinx.serialization.InternalSerializationApi
 import java.io.IOException
